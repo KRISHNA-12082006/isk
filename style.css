@@ -1,0 +1,269 @@
+/* ==== Reset and Base ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff7f0;
+  color: #3b1f1f;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==== Navbar ==== */
+nav {
+  background: #770000;
+  color: #fff7ec;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: #fff4e6;
+  font-size: 16px;
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+nav button:hover,
+nav button.active {
+  color: #ffd9b3;
+  transform: translateY(-2px);
+}
+
+/* Logo Styles */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffe9d6;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.logo-img {
+  height: 30px;
+  width: 30px;
+  filter: invert(1); /* Inverts logo color */
+  transition: transform 0.4s ease;
+}
+
+.founder {
+  font-size: 10px;
+  color: #ffe9d6;
+  text-shadow: 1px 1px 2px #000;
+}
+
+
+.prabhupad {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+
+/* ==== Main Layout ==== */
+main {
+  flex: 1;
+  padding: 40px 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* ==== Section Styling ==== */
+section {
+  display: none;
+  animation: fadeIn 1s ease-out;
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Show the visible section */
+section:target,
+section.active {
+  display: block;
+}
+
+/* ==== Responsive Grid ==== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  align-items: center;
+  margin-top:30px;
+}
+
+/* ==== Animated Reveal ==== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: all 1s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ==== Clip Path Image Card ==== */
+.clip-card {
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  transition: clip-path 0.5s ease-in-out;
+}
+
+.clip-card:hover {
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
+}
+
+.clip-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.clip-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ==== Enroll Form ==== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input,
+form select,
+form textarea {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+form button {
+  background: #aa0000;
+  color: #fff7ec;
+  border: none;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background: #cc0000;
+}
+
+/* ==== Footer ==== */
+footer {
+  background: #770000;
+  color: #fff7ec;
+  text-align: center;
+  padding: 25px 20px;
+  font-size: 14px;
+  margin-top: auto;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+}
+
+/* ==== Animations ==== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==== Scroll-triggered animations ==== */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==== Responsive Enhancements ==== */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  nav button {
+    margin: 10px 0;
+  }
+}
+
+
+/* Hamburger Button */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  color: #fff7ec;
+  cursor: pointer;
+}
+
+/* Mobile View Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #770000;
+    padding: 10px 0;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links button {
+    margin: 10px 20px;
+    text-align: left;
+  }
+
+  nav {
+    align-items: flex-start;
+  }
+}
